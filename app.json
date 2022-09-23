@@ -1,0 +1,31 @@
+{
+    "pages": [
+        "pages/home_music/index",
+        "pages/home_video/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChatMusic",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/home_music/index",
+                "text": "音乐",
+                "iconPath": "assets/images/tabbar/music.png",
+                "selectedIconPath": "assets/images/tabbar/music_active.png"
+            },
+            {
+                "pagePath": "pages/home_video/index",
+                "text": "视频",
+                "iconPath": "assets/images/tabbar/video.png",
+                "selectedIconPath": "assets/images/tabbar/video_active.png"
+            }
+        ],
+        "selectedColor": "#FF3030"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

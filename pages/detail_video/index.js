@@ -1,4 +1,5 @@
 // pages/detail_video/index.js
+import { getMvUrl, getMvDetail, getRelatedVideo } from '../../service/video_api'
 Page({
 
     /**
@@ -11,8 +12,10 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {
-        console.log(options);
+    async onLoad(options) {
+        const id = options.id
+        console.log(options,11);
+        const res = await getMvUrl(id)
     },
 
     /**

@@ -1,4 +1,5 @@
 {
+    "component": true,
     "usingComponents": {
         "video_item_1": "/components/video_item_1/index"
     }

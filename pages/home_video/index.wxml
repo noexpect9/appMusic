@@ -1,5 +1,6 @@
+
 <view class="video">
-	<block wx:for="{{topMv}}" wx:key="id">
-		<view>{{item.name}}</view>
-	</block>
+	<view wx:for="{{topMv}}" wx:key="id" class="item">
+		<video_item_1 item="{{item}}"></video_item_1>
+	</view>
 </view>

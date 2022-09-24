@@ -1,2 +1,7 @@
 <!--pages/detail_video/index.wxml-->
-<text>pages/detail_video/index.wxml</text>
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+<video class="video" src="{{mvUrlInfo.url}}" loop></video>
+<view class="title">{{mvDetail.name}}</view>
+<view class="auth">{{mvDetail.artistName}}-</view>
+<view class="count">{{mvDetail.playCount}}万次播放 -{{mvDetail.publishTime}}
+</view>

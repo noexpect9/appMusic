@@ -23,11 +23,11 @@ export function getMvUrl(id) {
 
 /**
  * 获取详情
- * @param {*} mvId 
+ * @param {*} mvid
  */
-export function getMvDetail(mvId) {
+export function getMvDetail(mvid) {
 	return wxRequest.get('/mv/detail', {
-		mvId
+		mvid
 	})
 }
 

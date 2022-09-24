@@ -1,5 +1,5 @@
 // 封装请求
-const base_URL = 'http://localhost:3000'
+const base_URL = 'http://127.0.0.1:3000'
 
 class WxRequest {
 	request(url, method, params) {

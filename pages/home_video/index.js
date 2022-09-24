@@ -7,6 +7,7 @@ Page({
      */
     data: {
         topMv: [],
+        hasMore: true
     },
 
     /**
@@ -15,54 +16,47 @@ Page({
     async onLoad(options) {
         const { data: res } = await getMv(0)
         this.setData({ topMv: res.data })
+        // this.getMvData(0)
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
+    async onPullDownRefresh() {
+        const { data: res } = await getMv(0)
+        this.setData({ topMv: res.data })
+        wx.stopPullDownRefresh()
+        // this.getMvData(0)
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom() {
-
+    async onReachBottom() {
+        if (!this.data.hasMore) return
+        const res = await getMv(this.data.topMv.length)
+        this.setData({ topMv: this.data.topMv.concat(res.data.data) })
+        this.setData({ hasMore: res.data.hasMore })
+        // this.getMvData(this.data.topMv.length)
+        // console.log(this.data.topMv);
     },
 
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
+    async getMvData(offset) {
+        // 判断是否请求
+        if (!this.data.hasMore) return
+        // 封装请求
+        const { data: res } = await getMv(offset)
+        let newData = this.data.topMv
+        if (offset === 0) {
+            newData = res.data
+        } else {
+            newData = newData.concat(res.data)
+        }
+        this.setData({ topMv: res.data })
+        this.setData({ hasMore: res.hasMore })
+    },
 
+    clickItem(e) {
+        const id = e.currentTarget.dataset.item.id
+        wx.navigateTo({
+          url: '/pages/detail_video/index?id=' + id,
+        })
     }
 })

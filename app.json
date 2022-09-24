@@ -2,7 +2,8 @@
     "pages": [
         "pages/home_music/index",
         "pages/home_video/index",
-        "components/video_item_1/index"
+        "components/video_item_1/index",
+        "pages/detail_video/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

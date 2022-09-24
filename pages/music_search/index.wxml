@@ -1,0 +1,5 @@
+<!--pages/music_search/index.wxml-->
+<view>搜索页</view>
+<van-search placeholder="请输入搜索关键词" shape="round">
+</van-search>
+

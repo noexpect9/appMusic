@@ -3,11 +3,12 @@
         "pages/home_music/index",
         "pages/home_video/index",
         "components/video_item_1/index",
-        "pages/detail_video/index"
+        "pages/detail_video/index",
+        "pages/music_search/index"
     ],
     "window": {
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
+        "navigationBarBackgroundColor": "#fafafa",
         "navigationBarTitleText": "WeChatMusic",
         "navigationBarTextStyle": "black"
     },

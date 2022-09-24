@@ -1,1 +1,12 @@
 /* pages/home_music/index.wxss */
+/* .swipe {
+
+} */
+
+.swipe_item {
+	display: flex;
+}
+
+.swipe_item .image {
+	width: 100%;
+}

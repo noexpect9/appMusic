@@ -1,2 +1,17 @@
 <!--pages/home_music/index.wxml-->
-<text>hello world</text>
+<van-search placeholder="请输入搜索关键词" 
+	shape="round"
+	disabled
+	bindtap="clickSearch">
+</van-search>
+
+<!-- 轮播图 -->
+<swiper class="swipe" indicator-dots autoplay circular>
+	<block wx:for="{{banners}}" wx:key="bannerId">
+		<swiper-item class="swipe_item">
+			<image class="image" src="{{item.pic}}" mode="widthFix"
+			  bindload="swiperImageLoad" style="height: {{swiperHeight}}px"
+			></image>
+		</swiper-item>
+	</block>
+</swiper>

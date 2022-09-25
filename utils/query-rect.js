@@ -1,3 +1,4 @@
+// 适配机型 --轮播图比列 createSelectorQuery()
 export default function (selector) {
 	return new Promise((resolve) => {
 		const query = wx.createSelectorQuery()

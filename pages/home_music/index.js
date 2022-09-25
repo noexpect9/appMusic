@@ -37,6 +37,9 @@ Page({
   swiperImageLoad() {
     throttleQueryRect('.image').then((res) => {
       const rect = res[0]
+      // setData是同步还是异步的
+      // setData在设置data数据上，是同步的
+      // 通过最新的数据对wxml进行渲染，渲染的过程是异步的
       this.setData({ swiperHeight: rect.height })
     })
   }

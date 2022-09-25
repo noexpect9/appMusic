@@ -1,6 +1,6 @@
 <!--pages/detail_video/index.wxml-->
 <wxs src="../../utils/format.wxs" module="format"></wxs>
-<video class="video" src="{{mvUrlInfo.url}}" loop></video>
+<video class="video" src="{{mvUrlInfo.url}}" loop referrer-policy="origin"></video>
 <view class="title">{{mvDetail.name}}</view>
 <view class="auth">{{mvDetail.artistName}}-</view>
 <view class="count">{{mvDetail.playCount}}万次播放 -{{mvDetail.publishTime}}

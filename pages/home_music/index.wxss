@@ -5,8 +5,10 @@
 
 .swipe_item {
 	display: flex;
+	border-radius: 20rpx;
 }
 
 .swipe_item .image {
 	width: 100%;
 }
+

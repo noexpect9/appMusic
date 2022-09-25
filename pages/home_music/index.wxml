@@ -1,4 +1,5 @@
 <!--pages/home_music/index.wxml-->
+
 <van-search placeholder="请输入搜索关键词" shape="round" disabled bindtap="clickSearch">
 </van-search>
 
@@ -12,22 +13,30 @@
 </swiper>
 
 <!-- 推荐歌曲 -->
-<!-- <view class="recommend" wx:if="{{recommendSongs.length > 0}}">
+<view class="recommend" wx:if="{{recommendSongs.length > 0}}">
 	<header-msg title="推荐歌曲"></header-msg>
 	<view class="songList">
 		<block wx:for="{{recommendSongs}}" wx:key="id">
 			<songs-item item="{{item}}"></songs-item>
 		</block>
 	</view>
-</view> -->
+</view>
 
 <!-- 热门歌单 -->
-<!-- <view>
+<view>
 	<songs-menu wx:if="{{hotMusicMenu.length > 0}}" title="推荐歌单" songMenu="{{hotMusicMenu}}"></songs-menu>
 	<songs-menu wx:if="{{recommendSongMenu.length > 0}}" title="热门歌单" songMenu="{{recommendSongMenu}}"></songs-menu>
-</view> -->
+</view>
 
 <!-- 巅峰榜 -->
 <view class="ranking">
-	<header-msg title="巅峰榜" showRight="{{false}}"></header-msg>
+	<header-msg title="排行榜" showRight="{{false}}"></header-msg>
+	<view class="ranking-list">
+		<block wx:for="{{newRanks}}" wx:key="id">
+			<ranking-item item="{{item}}"></ranking-item>
+		</block>
+		<block wx:for="{{upRanks}}" wx:key="id">
+			<ranking-item item="{{item}}"></ranking-item>
+		</block>
+	</view>
 </view>

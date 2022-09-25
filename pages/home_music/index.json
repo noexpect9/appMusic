@@ -3,6 +3,7 @@
         "van-search": "../../miniprogram_npm/vant-weapp/search/index",
         "header-msg": "/components/header_msg/index",
         "songs-item": "/components/songs_list/index",
-        "songs-menu": "/components/songs_menu/index"
+        "songs-menu": "/components/songs_menu/index",
+        "ranking-item": "/components/ranking_item/index"
     }
 }

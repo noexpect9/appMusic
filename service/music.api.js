@@ -5,3 +5,12 @@ export function getSwipe(){
 		type: 2
 	})
 }
+
+/**
+ * 获取热门歌曲
+ */
+export function getRankingData(id) {
+	return wxRequest.get('/playlist/detail',{
+		id
+	})
+}

@@ -1,17 +1,22 @@
 <!--pages/home_music/index.wxml-->
-<van-search placeholder="请输入搜索关键词" 
-	shape="round"
-	disabled
-	bindtap="clickSearch">
+<van-search placeholder="请输入搜索关键词" shape="round" disabled bindtap="clickSearch">
 </van-search>
 
 <!-- 轮播图 -->
 <swiper class="swipe" indicator-dots autoplay circular>
 	<block wx:for="{{banners}}" wx:key="bannerId">
 		<swiper-item class="swipe_item">
-			<image class="image" src="{{item.pic}}" mode="widthFix"
-			  bindload="swiperImageLoad" style="height: {{swiperHeight}}px"
-			></image>
+			<image class="image" src="{{item.pic}}" mode="widthFix" bindload="swiperImageLoad" style="height: {{swiperHeight}}px"></image>
 		</swiper-item>
 	</block>
 </swiper>
+
+<!-- 推荐歌曲 -->
+<view class="recommend">
+	<header-msg title="推荐歌单"></header-msg>
+	<view class="songList">
+		<block wx:for="{{recommendSongs}}" wx:key="id">
+			<songs-item item="{{item}}"></songs-item>
+		</block>
+	</view>
+</view>

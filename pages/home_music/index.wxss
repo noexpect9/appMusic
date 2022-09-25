@@ -1,11 +1,22 @@
 /* pages/home_music/index.wxss */
-/* .swipe {
+page {
+	padding: 0 20rpx;
+}
 
-} */
+.van-search {
+	padding: 10px 0 !important;
+}
+
+
+.swipe {
+	/* 圆角bug */
+	border-radius: 10rpx;
+	overflow: hidden;
+	transform: translateY(0);
+}
 
 .swipe_item {
 	display: flex;
-	border-radius: 20rpx;
 }
 
 .swipe_item .image {

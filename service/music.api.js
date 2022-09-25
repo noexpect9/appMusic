@@ -26,3 +26,14 @@ export function getMusicMenu(cat, limit = 6, offset = 0) {
 		cat, limit, offset
 	})
 }
+
+/**
+ * 获取排行榜
+ * @param {*} type: 地区
+ * 华语：1；欧美：2；韩国：3；日本：4 
+ */
+export function getRanks(type) {
+	return wxRequest.get('/toplist/detail', {
+		type
+	})
+}

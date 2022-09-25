@@ -15,7 +15,9 @@ Page({
     swiperHeight: 0,
     recommendSongs: [],
     hotMusicMenu: [],
-    recommendSongMenu: []
+    recommendSongMenu: [],
+    upRanks: [],
+    newRanks: [],
   },
 
   /**
@@ -32,6 +34,16 @@ Page({
       const recommendSongs = res.tracks.slice(0, 6)
       this.setData({ recommendSongs })
     })
+
+    rankingStore.dispatch('getRanksData')
+    rankingStore.onState('upRanking', (res) => {
+      const upRanks = res
+      this.setData({ upRanks })
+    })
+    rankingStore.onState('newRanking', (res) => {
+      const newRanks = res
+      this.setData({ newRanks })
+    })
   },
 
   getPageData() {
@@ -39,13 +51,13 @@ Page({
       this.setData({ banners: res.data.banners })
     }),
 
-    getMusicMenu().then(res => {
-      this.setData({ hotMusicMenu: res.data.playlists })
-    }),
+      getMusicMenu().then(res => {
+        this.setData({ hotMusicMenu: res.data.playlists })
+      }),
 
-    getMusicMenu("华语").then(res => {
-      this.setData({ recommendSongMenu: res.data.playlists })
-    })
+      getMusicMenu("华语").then(res => {
+        this.setData({ recommendSongMenu: res.data.playlists })
+      })
   },
 
 

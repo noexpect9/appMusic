@@ -12,17 +12,22 @@
 </swiper>
 
 <!-- 推荐歌曲 -->
-<view class="recommend">
+<!-- <view class="recommend" wx:if="{{recommendSongs.length > 0}}">
 	<header-msg title="推荐歌曲"></header-msg>
 	<view class="songList">
 		<block wx:for="{{recommendSongs}}" wx:key="id">
 			<songs-item item="{{item}}"></songs-item>
 		</block>
 	</view>
-</view>
+</view> -->
 
 <!-- 热门歌单 -->
-<view>
-	<songs-menu title="推荐歌单" songMenu="{{hotMusicMenu}}"></songs-menu>
-	<songs-menu title="热门歌单" songMenu="{{recommendSongMenu}}"></songs-menu>
+<!-- <view>
+	<songs-menu wx:if="{{hotMusicMenu.length > 0}}" title="推荐歌单" songMenu="{{hotMusicMenu}}"></songs-menu>
+	<songs-menu wx:if="{{recommendSongMenu.length > 0}}" title="热门歌单" songMenu="{{recommendSongMenu}}"></songs-menu>
+</view> -->
+
+<!-- 巅峰榜 -->
+<view class="ranking">
+	<header-msg title="巅峰榜" showRight="{{false}}"></header-msg>
 </view>

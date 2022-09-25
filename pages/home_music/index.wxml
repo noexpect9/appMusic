@@ -14,7 +14,7 @@
 
 <!-- 推荐歌曲 -->
 <view class="recommend" wx:if="{{recommendSongs.length > 0}}">
-	<header-msg title="推荐歌曲"></header-msg>
+	<header-msg title="推荐歌曲" bind:click="handleMoreClick"></header-msg>
 	<view class="songList">
 		<block wx:for="{{recommendSongs}}" wx:key="id">
 			<songs-item item="{{item}}"></songs-item>
@@ -33,10 +33,10 @@
 	<header-msg title="排行榜" showRight="{{false}}"></header-msg>
 	<view class="ranking-list">
 		<block wx:for="{{newRanks}}" wx:key="id">
-			<ranking-item item="{{item}}"></ranking-item>
+			<ranking-item item="{{item}}" bindtap="handleNewRanksClick" data-idx="{{item.id}}"></ranking-item>
 		</block>
 		<block wx:for="{{upRanks}}" wx:key="id">
-			<ranking-item item="{{item}}"></ranking-item>
+			<ranking-item item="{{item}}" bindtap="handleUpRanksClick" data-idx="{{item.id}}"></ranking-item>
 		</block>
 	</view>
 </view>

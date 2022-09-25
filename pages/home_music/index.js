@@ -31,6 +31,7 @@ Page({
     // 获取共享数据
     rankingStore.onState('hotRanking', (res) => {
       if (!res.tracks) return
+      console.log(res);
       const recommendSongs = res.tracks.slice(0, 6)
       this.setData({ recommendSongs })
     })
@@ -66,6 +67,27 @@ Page({
       url: '/pages/music_search/index',
     })
   },
+
+  handleMoreClick() {
+    this.navigateToDetailSongPage()
+  },
+
+  handleNewRanksClick(e) {
+    const id = e.currentTarget.dataset.idx
+    this.navigateToDetailSongPage(id)
+  },
+
+  handleUpRanksClick(e) {
+    const id = e.currentTarget.dataset.idx
+    this.navigateToDetailSongPage(id)
+  },
+
+  navigateToDetailSongPage(rankingName) {
+    wx.navigateTo({
+      url: `/pages/detail_song/index?ranking=${rankingName}`,
+    })
+  },
+
 
   // 获取图片高度
   swiperImageLoad() {

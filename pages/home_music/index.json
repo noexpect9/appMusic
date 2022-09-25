@@ -2,6 +2,7 @@
     "usingComponents": {
         "van-search": "../../miniprogram_npm/vant-weapp/search/index",
         "header-msg": "/components/header_msg/index",
-        "songs-item": "/components/songs_list/index"
+        "songs-item": "/components/songs_list/index",
+        "songs-menu": "/components/songs_menu/index"
     }
 }

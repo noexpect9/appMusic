@@ -1,6 +1,6 @@
 // pages/home_music/index.js
 import { rankingStore } from '../../store/ranking_store'
-import { getSwipe } from '../../service/music.api'
+import { getSwipe, getMusicMenu } from '../../service/music.api'
 import queryRect from '../../utils/query-rect'
 import throttle from '../../utils/throttle'
 
@@ -13,7 +13,9 @@ Page({
   data: {
     banners: [],
     swiperHeight: 0,
-    recommendSongs: []
+    recommendSongs: [],
+    hotMusicMenu: [],
+    recommendSongMenu: []
   },
 
   /**
@@ -35,8 +37,17 @@ Page({
   getPageData() {
     getSwipe().then(res => {
       this.setData({ banners: res.data.banners })
+    }),
+
+    getMusicMenu().then(res => {
+      this.setData({ hotMusicMenu: res.data.playlists })
+    }),
+
+    getMusicMenu("华语").then(res => {
+      this.setData({ recommendSongMenu: res.data.playlists })
     })
   },
+
 
   clickSearch() {
     wx.navigateTo({

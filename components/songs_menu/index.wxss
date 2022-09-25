@@ -1,0 +1,18 @@
+/* components/songs_menu/index.wxss */
+.menu-list {
+	width: 100vw;   /* 与获取screenWidth完成相同*/
+	white-space: nowrap;
+	position: relative;
+	left: -20rpx;
+}
+
+.menu-item {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 20rpx;
+	width: 220rpx;
+}
+
+.menu-item:last-child {
+	margin-right: 20rpx;
+}

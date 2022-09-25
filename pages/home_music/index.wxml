@@ -13,10 +13,16 @@
 
 <!-- 推荐歌曲 -->
 <view class="recommend">
-	<header-msg title="推荐歌单"></header-msg>
+	<header-msg title="推荐歌曲"></header-msg>
 	<view class="songList">
 		<block wx:for="{{recommendSongs}}" wx:key="id">
 			<songs-item item="{{item}}"></songs-item>
 		</block>
 	</view>
+</view>
+
+<!-- 热门歌单 -->
+<view>
+	<songs-menu title="推荐歌单" songMenu="{{hotMusicMenu}}"></songs-menu>
+	<songs-menu title="热门歌单" songMenu="{{recommendSongMenu}}"></songs-menu>
 </view>

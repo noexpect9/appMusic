@@ -29,6 +29,13 @@
           "query": "id=6671216522&type=menu",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/music_search/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

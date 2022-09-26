@@ -1,5 +1,27 @@
 <!--pages/music_search/index.wxml-->
-<view>搜索页</view>
-<van-search placeholder="请输入搜索关键词" shape="round">
+<!-- 搜索框 -->
+<van-search value="{{searchValue}}" placeholder="请输入搜索关键词" shape="round" bind:change="handleSearchChange">
 </van-search>
 
+<!-- 热门内容 -->
+<view class="hot" wx:if="{{!searchValue.length}}">
+	<header-msg title="热门搜索" showRight="{{false}}"></header-msg>
+	<view class="list">
+		<block wx:for="{{hotKeys}}" wx:key="first">
+			<view class="tag">{{item.first}}</view>
+		</block>
+	</view>
+</view>
+
+<!-- 搜索 -->
+<view class="suggest" wx:else>
+	<view class="title">搜索:"{{searchValue}}"</view>
+	<view class="list">
+		<block wx:for="{{suggestMusic}}" wx:key="keyword">
+			<view class="item">
+				<image class="icon" mode="widthFix" src="/assets/images/搜索.png"></image>
+				<text class="text">{{item.keyword}}</text>
+			</view>
+		</block>
+	</view>
+</view>

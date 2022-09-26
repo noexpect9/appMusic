@@ -55,7 +55,10 @@ export function getRanksList(id) {
 	})
 }
 
-
+/**
+ * 
+ * @param {*} id 
+ */
 export function getSongDetail(id) {
 	return wxRequest.get('/playlist/detail',{
 		id

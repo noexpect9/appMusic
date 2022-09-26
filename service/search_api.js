@@ -17,3 +17,12 @@ export function getSuggest(keywords) {
 		type: "mobile"
 	})
 }
+
+/**
+ * 搜索歌曲
+ */
+export function getSearchData(keywords) {
+	return wxRequest.get('/cloudsearch',{
+		keywords
+	})
+}

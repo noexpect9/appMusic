@@ -1,6 +1,7 @@
 {
     "usingComponents": {
         "van-search": "../../miniprogram_npm/vant-weapp/search/index",
-        "header-msg": "../../components/header_msg/index"
+        "header-msg": "../../components/header_msg/index",
+        "song-list-item": "../../components/songs_list_item/index"
     }
 }

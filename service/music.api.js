@@ -39,7 +39,7 @@ export function getRanks(type) {
 }
 
 /**
- * 
+ * 获取排行榜
  * @param {*} id 
  * @param {*} limit 
  * @param {*} offset 
@@ -49,9 +49,15 @@ export function getMusicList(id = 1, limit, offset) {
 		id, limit, offset
 	})
 }
-
 export function getRanksList(id) {
 	return wxRequest.get('/playlist/track/all', {
+		id
+	})
+}
+
+
+export function getSongDetail(id) {
+	return wxRequest.get('/playlist/detail',{
 		id
 	})
 }

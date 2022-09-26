@@ -1,5 +1,5 @@
 // pages/detail_song/index.js
-import { getMusicList, getRanksList } from '../../service/music.api'
+import { getMusicList, getRanksList, getSongDetail } from '../../service/music.api'
 
 Page({
 
@@ -9,22 +9,37 @@ Page({
   data: {
     hotMusicList: [],
     newRanksList: [],
-    upRanksList: []
+    upRanksList: [],
+    ranksInfo: {},
+    type: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    const type = options.type
     const id = options.id
-    if (id == 'undefined') {
-      getMusicList().then(res => {
-        this.setData({ hotMusicList: res.data.songs })
+    this.setData({ type })
+
+    if (type === 'menu') {
+      getSongDetail(id).then(res => {
+        console.log(res);
+        this.setData({ ranksInfo: res.data.playlist })
       })
     } else {
-      getRanksList(id).then(res => {
-        this.setData({ newRanksList: res.data.songs })
-      })
+      if (id == 'undefined') {
+        getMusicList().then(res => {
+          this.setData({ hotMusicList: res.data.songs })
+        })
+      } else {
+        getRanksList(id).then(res => {
+          this.setData({ newRanksList: res.data.songs })
+        })
+      }
     }
+
+
+
   },
 })

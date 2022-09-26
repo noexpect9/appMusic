@@ -1,4 +1,37 @@
 <!--pages/detail_song/index.wxml-->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+<!-- <header-msg title="{{ranksInfo.name}}" showRight="{{false}}"></header-msg> -->
+
+<view class="header">
+	<!-- 背景 -->
+	<image class="bg-image" mode="aspectFill" src="{{ranksInfo.coverImgUrl}}"></image>
+	<view class="bg-cover"></view>
+	<!-- 内容 -->
+	<view class="content">
+		<image class="image" mode="aspectFill" src="{{ranksInfo.coverImgUrl}}"></image>
+		<view class="info">
+			<view class="title">{{ranksInfo.name}}</view>
+			<view class="author">
+				<image class="avatar" mode="aspectFill" src="{{ranksInfo.creator.avatarUrl}}"></image>
+				<text class="nickname">{{ranksInfo.creator.nickname}}</text>
+			</view>
+			<view class="desc">简介:{{ranksInfo.description}}</view>
+		</view>
+	</view>
+	<view class="operation">
+		<view class="faver item">
+			<image class="icon" mode="widthFix" src="/assets/icon/爱心.png">
+			</image>
+			<text class="text">{{format.formatCount(ranksInfo.playCount)}}</text>
+		</view>
+		<view class="share item">
+			<image class="icon" mode="widthFix" src="/assets/icon/分享.png">
+			</image>
+			<text class="text">分享</text>
+		</view>
+	</view>
+</view>
+
 <view class="song-list">
 	<block wx:for="{{hotMusicList}}" wx:key="id">
 		<song-list-item item="{{item}}" index="{{index + 1}}"></song-list-item>
@@ -7,6 +40,9 @@
 		<song-list-item item="{{item}}" index="{{index + 1}}"></song-list-item>
 	</block>
 	<block wx:for="{{upRanksList}}" wx:key="id">
+		<song-list-item item="{{item}}" index="{{index + 1}}"></song-list-item>
+	</block>
+	<block wx:for="{{ranksInfo.tracks}}" wx:key="id">
 		<song-list-item item="{{item}}" index="{{index + 1}}"></song-list-item>
 	</block>
 </view>

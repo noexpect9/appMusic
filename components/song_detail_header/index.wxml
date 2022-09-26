@@ -1,0 +1,30 @@
+<!--components/song_detail_header/index.wxml-->
+<view class="header">
+	<!-- 背景 -->
+	<image class="bg-image" mode="aspectFill" src="{{ranksInfo.coverImgUrl}}"></image>
+	<view class="bg-cover">{{ranksInfo.name}}</view>
+	<!-- 内容 -->
+	<view class="content">
+		<image class="iamge" mode="aspectFill" src="{{ranksInfo.coverImgUrl}}"></image>
+		<view class="info">
+			<view class="title">{{ranksInfo.name}}</view>
+			<view class="anthor">
+				<image class="avatar" mode="aspectFill" src="{{ranksInfo.creator.avatarUrl}}"></image>
+				<text class="nickname">{{ranksInfo.creator.nickname}}</text>
+			</view>
+			<view class="desc">简介:{{ranksInfo.description}}</view>
+		</view>
+	</view>
+	<view class="operation">
+		<view class="faver">
+			<image class="icon" mode="widthFix" src="/assets/icon/爱心.png">
+			</image>
+			<text class="text">{{ranksInfo.playCount}}</text>
+		</view>
+		<view class="share">
+			<image class="icon" mode="widthFix" src="/assets/icon/分享.png">
+			</image>
+			<text class="text">分享</text>
+		</view>
+	</view>
+</view>

@@ -85,7 +85,7 @@ Page({
 
   navigateToDetailSongPage(id) {
     wx.navigateTo({
-      url: `/pages/detail_song/index?id=${id}`,
+      url: `/pages/detail_song/index?id=${id}&type=rank`,
     })
   },
 

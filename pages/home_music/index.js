@@ -1,6 +1,6 @@
 // pages/home_music/index.js
 import { rankingStore } from '../../store/ranking_store'
-import { getSwipe, getMusicMenu } from '../../service/music.api'
+import { getSwipe, getMusicMenu, getRanksList } from '../../service/music.api'
 import queryRect from '../../utils/query-rect'
 import throttle from '../../utils/throttle'
 
@@ -18,6 +18,7 @@ Page({
     recommendSongMenu: [],
     upRanks: [],
     newRanks: [],
+    RanksList: []
   },
 
   /**
@@ -31,7 +32,6 @@ Page({
     // 获取共享数据
     rankingStore.onState('hotRanking', (res) => {
       if (!res.tracks) return
-      console.log(res);
       const recommendSongs = res.tracks.slice(0, 6)
       this.setData({ recommendSongs })
     })
@@ -75,6 +75,7 @@ Page({
   handleNewRanksClick(e) {
     const id = e.currentTarget.dataset.idx
     this.navigateToDetailSongPage(id)
+
   },
 
   handleUpRanksClick(e) {
@@ -82,9 +83,9 @@ Page({
     this.navigateToDetailSongPage(id)
   },
 
-  navigateToDetailSongPage(rankingName) {
+  navigateToDetailSongPage(id) {
     wx.navigateTo({
-      url: `/pages/detail_song/index?ranking=${rankingName}`,
+      url: `/pages/detail_song/index?id=${id}`,
     })
   },
 

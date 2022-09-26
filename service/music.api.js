@@ -37,3 +37,21 @@ export function getRanks(type) {
 		type
 	})
 }
+
+/**
+ * 
+ * @param {*} id 
+ * @param {*} limit 
+ * @param {*} offset 
+ */
+export function getMusicList(id = 1, limit, offset) {
+	return wxRequest.get('/playlist/track/all', {
+		id, limit, offset
+	})
+}
+
+export function getRanksList(id) {
+	return wxRequest.get('/playlist/track/all', {
+		id
+	})
+}

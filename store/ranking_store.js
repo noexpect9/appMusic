@@ -5,7 +5,8 @@ const rankingStore = new HYEventStore({
 	state: {
 		hotRanking: {},
 		newRanking: {},
-		upRanking: {}
+		upRanking: {},
+		allRanks: {}
 	},
 	actions: {
 		getRankingDataAction(context) {

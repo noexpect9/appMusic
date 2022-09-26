@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "header-msg": "/components/header_msg/index",
+    "song-list-item": "/components/songs_list_item/index"
+  }
 }

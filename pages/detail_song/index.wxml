@@ -1,2 +1,12 @@
 <!--pages/detail_song/index.wxml-->
-<text>pages/detail_song/index.wxml</text>
+<view class="song-list">
+	<block wx:for="{{hotMusicList}}" wx:key="id">
+		<song-list-item item="{{item}}" index="{{index + 1}}"></song-list-item>
+	</block>
+	<block wx:for="{{newRanksList}}" wx:key="id">
+		<song-list-item item="{{item}}" index="{{index + 1}}"></song-list-item>
+	</block>
+	<block wx:for="{{upRanksList}}" wx:key="id">
+		<song-list-item item="{{item}}" index="{{index + 1}}"></song-list-item>
+	</block>
+</view>

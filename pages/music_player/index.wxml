@@ -4,5 +4,42 @@
 
 <!-- 导航 -->
 <nav-bar>
-	<!-- <text>aa</text> -->
+	<view class="tab" slot="title">
+		<view class="{{currentPage === 0 ? 'active' : ''}}">歌曲</view>
+		<view class="div">|</view>
+		<view class="{{currentPage === 1 ? 'active' : ''}}">歌词</view>
+	</view>
 </nav-bar>
+
+<!-- 内容 -->
+<swiper class="content" style="height: {{swiperHeight}}px" bindchange="swiperChange">
+	<swiper-item class="music">
+		<view class="album">
+			<image class="image" mode="widthFix" src="{{currentMusic[0].al.picUrl}}"></image>
+		</view>
+		<view class="info">
+			<view class="title">{{currentMusic[0].al.name}}</view>
+			<view class="subtitle">
+				<view class="singer">{{currentMusic[0].ar[0].name}}</view>
+				<view class="alias">{{currentMusic[0].name}}</view>
+			</view>
+		</view>
+		<view class="lyric">歌词</view>
+		<view class="progress">
+			<slider class="slider" block-size="{{12}}"></slider>
+			<view class="time">
+				<view class="current">01:22</view>
+				<view class="duration">03:55</view>
+			</view>
+		</view>
+		<view class="operation">
+			<image class="btn btn-mode" src="/assets/images/切换.png"></image>
+			<image class="btn btn-mode" src="/assets/images/向左.png"></image>
+			<image class="btn btn-mode" src="/assets/images/暂停.png"></image>
+			<image class="btn btn-mode" src="/assets/images/向右.png"></image>
+			<image class="btn btn-mode" src="/assets/images/列表.png"></image>
+		</view>
+	</swiper-item>
+	<swiper-item class="lyric">2</swiper-item>
+</swiper>
+

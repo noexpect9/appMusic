@@ -1,2 +1,8 @@
 <!--pages/music_player/index.wxml-->
-<text>pages/music_player/index.wxml</text>
+<image class="bg-image" mode="aspectFill" src="{{currentMusic[0].al.picUrl}}"></image>
+<view class="bg-cover"></view>
+
+<!-- 导航 -->
+<nav-bar>
+	<!-- <text>aa</text> -->
+</nav-bar>

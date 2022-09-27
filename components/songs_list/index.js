@@ -24,9 +24,8 @@ Component({
         handleClickPlayer(e) {
             const id = e.currentTarget.dataset.id
             wx.navigateTo({
-              url: '/pages/music_player/index?id' + id,
+              url: '/pages/music_player/index?id=' + id,
             })
-            console.log(id);
         }
     }
 })

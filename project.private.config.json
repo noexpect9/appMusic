@@ -36,6 +36,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/music_player/index",
+          "query": "id168324=undefined",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -34,6 +34,7 @@ Page({
         if (!searchValue.length) {
             this.setData({ suggestMusic: [] })
             this.setData({ resultSongs: [] })
+            debounceGetSuggest.cancel() // 取消发送请求
             return
         }
         debounceGetSuggest(searchValue).then(res => {

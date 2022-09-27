@@ -121,14 +121,15 @@ page {
 }
 
 .operation .btn-mode {
-	width: 80rpx;
-	height: 80rpx;
-}
-
-.operation .btn-mode .icons {
 	width: 60rpx;
 	height: 60rpx;
 }
+
+.operation .icons {
+	width: 100rpx;
+	height: 100rpx;
+}
+
 
 .operation .btn-pause {
 	width: 130rpx;

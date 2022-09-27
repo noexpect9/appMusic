@@ -34,6 +34,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    handleLeftClick() {
+      console.log(11);
+      wx.navigateTo({
+        url: '/pages/home_video/index',
+      })
+    }
   }
 })

@@ -40,14 +40,14 @@
         {
           "name": "",
           "pathName": "pages/music_player/index",
-          "query": "id168324=undefined",
+          "query": "id=32337668",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
           "pathName": "pages/music_player/index",
-          "query": "id=32337668",
+          "query": "id=1481164987",
           "launchMode": "default",
           "scene": null
         }

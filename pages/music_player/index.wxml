@@ -4,7 +4,7 @@
 <view class="bg-cover"></view>
 
 <!-- 导航 -->
-<nav-bar>
+<nav-bar bind:click="handleBackClick">
 	<view class="tab" slot="title">
 		<view class="{{currentPage === 0 ? 'active' : ''}}">歌曲</view>
 		<view class="div">|</view>
@@ -19,7 +19,7 @@
 			<image class="image" mode="widthFix" src="{{currentMusic[0].al.picUrl}}"></image>
 		</view>
 		<view class="info">
-			<view class="title">{{currentMusic[0].al.name}}</view>
+			<view class="title">{{currentMusic[0].name}}</view>
 			<view class="subtitle">
 				<view class="singer">{{currentMusic[0].ar[0].name}}</view>
 				<view class="alias">{{currentMusic[0].alia[0]}}</view>
@@ -41,5 +41,14 @@
 			<image class="btn btn-mode" src="/assets/images/列表.png"></image>
 		</view>
 	</swiper-item>
-	<swiper-item class="lyric">2</swiper-item>
+	<swiper-item class="lyric">
+		<scroll-view scroll-with-animation class="lyric-list" scroll-y scroll-top="{{lyricScrollTop}}">
+			<block wx:for="{{musicLyric}}" wx:key="index">
+				<view class="item {{currentLyricIndex === index ? 'active': ''}}" 
+				style="padding-top:{{index === 0 ? (swiperHeight/2-80) : 0 }}px; padding-bottom: {{index === musicLyric.length - 1 ? (swiperHeight/2+80) : 0 }}px;">
+				{{item.lyricText}}
+				</view>
+			</block>
+		</scroll-view>
+	</swiper-item>
 </swiper>

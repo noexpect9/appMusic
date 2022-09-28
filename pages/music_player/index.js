@@ -21,7 +21,8 @@ Page({
     currentTime: 0,
     sliderTime: 0,
     sliderValue: 0,
-    isSliderChanging: false
+    isSliderChanging: false,
+    lyricScrollTop: 0
   },
 
   /**
@@ -66,8 +67,10 @@ Page({
           const currentIndex = i - 1
           if (this.data.currentLyricIndex !== currentIndex) {
             const currentLyricInfo = this.data.musicLyric[currentIndex]
-            console.log(currentLyricInfo.lyricText);
-            this.setData({ lyricText: currentLyricInfo.lyricText, currentLyricIndex: currentIndex })
+            this.setData({ lyricText: currentLyricInfo.lyricText, 
+              currentLyricIndex: currentIndex, 
+              lyricScrollTop: currentIndex * 35
+            })
           }
           break
         }
@@ -112,5 +115,9 @@ Page({
     audioContext.seek(currentTime / 1000)
     // 记录最新的sliderValue
     this.setData({ sliderTime: value, isSliderChanging: false })
+  },
+
+  handleBackClick() {
+    wx.navigateBack()
   }
 })

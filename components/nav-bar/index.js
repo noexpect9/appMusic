@@ -35,10 +35,7 @@ Component({
    */
   methods: {
     handleLeftClick() {
-      console.log(11);
-      wx.navigateTo({
-        url: '/pages/home_video/index',
-      })
+      this.triggerEvent('click')
     }
   }
 })

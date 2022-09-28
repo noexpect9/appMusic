@@ -27,7 +27,7 @@
 		</view>
 		<view class="lyric">歌词</view>
 		<view class="progress">
-			<slider class="slider" block-size="{{12}}"></slider>
+			<slider class="slider" block-size="{{12}}" bindchanging="handleSliderChanging" bindchange="handleSliderChange" value="{{sliderValue}}"></slider>
 			<view class="time">
 				<view class="current">{{format.formatData(currentTime)}}</view>
 				<view class="duration">{{format.formatData(durationTime)}}</view>

@@ -13,7 +13,10 @@ Page({
     swiperHeight: 0,
     // 歌曲时长
     durationTime: 0,
-    currentTime: 0
+    currentTime: 0,
+    sliderTime: 0,
+    sliderValue: 0,
+    isSliderChanging: false
   },
 
   /**
@@ -45,7 +48,10 @@ Page({
     // 获取音乐播放时间
     audioContext.onTimeUpdate(() => {
       const currentTime = audioContext.currentTime * 1000
-      this.setData({ currentTime })
+      if (!this.data.isSliderChanging) {
+        const sliderValue = currentTime / this.data.durationTime * 100
+        this.setData({ sliderValue, currentTime })
+      }
     })
   },
 
@@ -60,5 +66,21 @@ Page({
   swiperChange(e) {
     const current = e.detail.current
     this.setData({ currentPage: current })
+  },
+
+  handleSliderChanging(e) {
+    const value = e.detail.value
+    const currentTime = this.data.durationTime * value / 100
+    this.setData({ isSliderChanging: true, currentTime })
+  },
+
+  // 歌曲进度条
+  handleSliderChange(e) {
+    // console.log(this.data.durationTime);
+    const value = e.detail.value
+    const currentTime = this.data.durationTime * value / 100
+    audioContext.pause()
+    audioContext.seek(currentTime / 1000)
+    this.setData({ sliderTime: value, isSliderChanging: false })
   }
 })

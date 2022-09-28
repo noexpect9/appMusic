@@ -25,7 +25,7 @@
 				<view class="alias">{{currentMusic[0].alia[0]}}</view>
 			</view>
 		</view>
-		<view class="lyric">歌词</view>
+		<view class="lyric">{{lyricText}}</view>
 		<view class="progress">
 			<slider class="slider" block-size="{{12}}" bindchanging="handleSliderChanging" bindchange="handleSliderChange" value="{{sliderValue}}"></slider>
 			<view class="time">

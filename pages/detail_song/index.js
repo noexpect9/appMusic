@@ -24,7 +24,6 @@ Page({
 
     if (type === 'menu') {
       getSongDetail(id).then(res => {
-        console.log(res);
         this.setData({ ranksInfo: res.data.playlist })
       })
     } else {

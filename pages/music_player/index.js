@@ -1,6 +1,8 @@
 // pages/music_player/index.js
-import { getMusicDetail } from '../../service/player_api'
+import { getMusicDetail, getMusicLyric } from '../../service/player_api'
 import { audioContext } from '../../store/player_store'
+import { parseLyric } from '../../utils/parse-lyric'
+
 Page({
 
   /**
@@ -11,6 +13,9 @@ Page({
     currentMusic: {},
     currentPage: 0,
     swiperHeight: 0,
+    musicLyric: [],
+    currentLyricText: "",
+    currentLyricIndex: 0,
     // 歌曲时长
     durationTime: 0,
     currentTime: 0,
@@ -42,24 +47,46 @@ Page({
     audioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
     // audioContext.autoplay = true
     audioContext.onCanplay(() => {
-      // audioContext.play()
+      audioContext.play()
     })
 
     // 获取音乐播放时间
     audioContext.onTimeUpdate(() => {
+      // 获取当前时间
       const currentTime = audioContext.currentTime * 1000
+      // 根据当前时间修改currentTime/silderValue
       if (!this.data.isSliderChanging) {
         const sliderValue = currentTime / this.data.durationTime * 100
         this.setData({ sliderValue, currentTime })
       }
+      // 根据当前时间去查找播放的歌词
+      for (let i = 0; i < this.data.musicLyric.length; i++) {
+        const lyricInfo = this.data.musicLyric[i]
+        if (currentTime < lyricInfo.time) {
+          const currentIndex = i - 1
+          if (this.data.currentLyricIndex !== currentIndex) {
+            const currentLyricInfo = this.data.musicLyric[currentIndex]
+            console.log(currentLyricInfo.lyricText);
+            this.setData({ lyricText: currentLyricInfo.lyricText, currentLyricIndex: currentIndex })
+          }
+          break
+        }
+      }
     })
   },
 
-  // 获取歌曲
+  // 获取歌曲接口
   getPageData(id) {
     getMusicDetail(id).then(res => {
       this.setData({ currentMusic: res.data.songs, durationTime: res.data.songs[0].dt })
     })
+
+    getMusicLyric(id).then(res => {
+      const lyricString = res.data.lrc.lyric
+      const lyrics = parseLyric(lyricString)
+      this.setData({ musicLyric: lyrics })
+    })
+
   },
 
   // 事件处理
@@ -76,11 +103,14 @@ Page({
 
   // 歌曲进度条
   handleSliderChange(e) {
-    // console.log(this.data.durationTime);
+    // 获取变化值
     const value = e.detail.value
+    // 获取需要播放的currentTime
     const currentTime = this.data.durationTime * value / 100
+    // 设置context播放currentTime位置的音乐
     audioContext.pause()
     audioContext.seek(currentTime / 1000)
+    // 记录最新的sliderValue
     this.setData({ sliderTime: value, isSliderChanging: false })
   }
 })

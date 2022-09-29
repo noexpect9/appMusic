@@ -1,7 +1,10 @@
 // pages/music_player/index.js
 import { getMusicDetail, getMusicLyric } from '../../service/player_api'
-import { audioContext } from '../../store/player_store'
+import { audioContext, playStore } from '../../store/player_store'
 import { parseLyric } from '../../utils/parse-lyric'
+
+
+const playModeName = ["order", "repeat", "random"]
 
 Page({
 
@@ -22,7 +25,12 @@ Page({
     sliderTime: 0,
     sliderValue: 0,
     isSliderChanging: false,
-    lyricScrollTop: 0
+    lyricScrollTop: 0,
+    // 播放模式
+    playModeIndex: 0,
+    playModeName: "order",
+    isPlaying: false,
+    playingName: "pause"
   },
 
   /**
@@ -31,6 +39,7 @@ Page({
   onLoad(options) {
     // 获取id
     const id = options.id
+    this.setupPlayerStoreListener()
     this.setData({ id })
     // 根据id获取歌曲信息
     this.getPageData(id)
@@ -67,8 +76,9 @@ Page({
           const currentIndex = i - 1
           if (this.data.currentLyricIndex !== currentIndex) {
             const currentLyricInfo = this.data.musicLyric[currentIndex]
-            this.setData({ lyricText: currentLyricInfo.lyricText, 
-              currentLyricIndex: currentIndex, 
+            this.setData({
+              lyricText: currentLyricInfo.lyricText,
+              currentLyricIndex: currentIndex,
               lyricScrollTop: currentIndex * 35
             })
           }
@@ -119,5 +129,30 @@ Page({
 
   handleBackClick() {
     wx.navigateBack()
+  },
+  // 播放模式
+  handleModeClick() {
+    // 计算最新palyModeIndex
+    let playModeIndex = this.data.playModeIndex + 1
+    if (playModeIndex === 3) playModeIndex = 0
+    // 设置最新
+    playStore.setState("playModeIndex", playModeIndex)
+  },
+  // 播放/暂停
+  handlePlayClick() {
+    playStore.dispatch("changeMusicPlayStatus")
+  },
+
+
+  // 监听播放模式
+  setupPlayerStoreListener() {
+    playStore.onStates(['playModeIndex', 'isPlaying'], ({playModeIndex, isPlaying}) => {
+      if (playModeIndex !== undefined) {
+        this.setData({ playModeIndex, playModeName: playModeName[playModeIndex] })
+      }
+      if (isPlaying !== undefined) {
+        this.setData({ isPlaying, playingName: isPlaying ?  "resume" : "pause"  })
+      }
+    })
   }
 })

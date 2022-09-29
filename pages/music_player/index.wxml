@@ -34,9 +34,9 @@
 			</view>
 		</view>
 		<view class="operation">
-			<image class="btn btn-mode" src="/assets/images/切换.png"></image>
+			<image bindtap="handleModeClick" class="btn btn-mode" src="/assets/images/play_{{playModeName}}.png"></image>
 			<image class="btn btn-mode" src="/assets/images/上一集.png"></image>
-			<image class="btn btn-mode icons" src="/assets/images/播放.png"></image>
+			<image bindtap="handlePlayClick" class="btn btn-mode icons" src="/assets/images/{{playingName}}.png"></image>
 			<image class="btn btn-mode" src="/assets/images/下一集.png"></image>
 			<image class="btn btn-mode" src="/assets/images/列表.png"></image>
 		</view>
